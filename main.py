@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 
 
 class MainWindow(QMainWindow):
@@ -11,6 +11,9 @@ class MainWindow(QMainWindow):
         self.visualize_button = QPushButton("Visualize input data", self)
         self.visualize_button.setGeometry(50, 25, 150, 30)
         self.visualize_button.clicked.connect(self.visualize_input_data)
+
+        self.terms_label = QLabel("Terms: T4, T5, T5, T5, T3", self)
+        self.terms_label.setGeometry(50, 75, 150, 30)
 
     def visualize_input_data(self):
         criteria = ['K1', 'K2', 'K3', 'K4', 'K5']
