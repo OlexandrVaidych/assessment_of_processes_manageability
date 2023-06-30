@@ -1,5 +1,18 @@
 class ManageabilityProcessAssessment:
 
+    def calculate_membership_function(self, evaluations, T1, T5):
+        membership_functions = []
+
+        for i in range(len(evaluations)):
+            if (evaluations[i] > (T1[0] + T5[1]) / 2) & (evaluations[i] <= T5[1]):
+                membership_function = 1 - 2 * ((T5[1] -evaluations[i]) / (T5[1] - T1[0])) ** 2
+            else:
+                membership_function = 2 * ((evaluations[i] - T1[0]) / (T5[1] - T1[0])) ** 2
+
+            membership_functions.append(round(membership_function, 2))
+
+        return membership_functions
+
     def evaluate_manageability_process(self, input_data, terms):
         T1 = [0, 20]
         T2 = [20, 40]
@@ -19,3 +32,6 @@ class ManageabilityProcessAssessment:
 
         criterion_evaluations = [criterion_evaluation1, criterion_evaluation2, criterion_evaluation3,
                                  criterion_evaluation4, criterion_evaluation5]
+
+        membership_functions = self.calculate_membership_function(criterion_evaluations, T1, T5)
+
