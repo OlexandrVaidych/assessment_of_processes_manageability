@@ -1,5 +1,10 @@
 class ManageabilityProcessAssessment:
 
+    def calculate_projection_assessment(self, a, b, convolution):
+        projection_assessment = convolution * (b - a) + a
+
+        return projection_assessment
+
     def calculate_convolution(self, membership_functions, normalized_weight_coeffs):
         convolution = 0
 
@@ -57,3 +62,5 @@ class ManageabilityProcessAssessment:
         normalized_weight_coeffs = self.calculate_norm_weight_coeffs(weight_coeffs)
 
         convolution = self.calculate_convolution(membership_functions, normalized_weight_coeffs)
+
+        projection_assessment = self.calculate_projection_assessment(T1[0], T5[1], convolution)
