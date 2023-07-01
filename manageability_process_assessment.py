@@ -1,5 +1,13 @@
 class ManageabilityProcessAssessment:
 
+    def calculate_convolution(self, membership_functions, normalized_weight_coeffs):
+        convolution = 0
+
+        for i in range(len(membership_functions)):
+            convolution += membership_functions[i] * normalized_weight_coeffs[i]
+
+        return round(convolution, 3)
+
     def calculate_norm_weight_coeffs(self, weight_coeffs):
         norm_weight_coeffs = []
         sum_weight_coeffs = sum(weight_coeffs)
@@ -47,3 +55,5 @@ class ManageabilityProcessAssessment:
         membership_functions = self.calculate_membership_function(criterion_evaluations, T1, T5)
 
         normalized_weight_coeffs = self.calculate_norm_weight_coeffs(weight_coeffs)
+
+        convolution = self.calculate_convolution(membership_functions, normalized_weight_coeffs)
