@@ -1,5 +1,16 @@
 class ManageabilityProcessAssessment:
 
+    def calculate_norm_weight_coeffs(self, weight_coeffs):
+        norm_weight_coeffs = []
+        sum_weight_coeffs = sum(weight_coeffs)
+
+        for coeff in weight_coeffs:
+            norm_weight_coeff = coeff / sum_weight_coeffs
+
+            norm_weight_coeffs.append(round(norm_weight_coeff, 2))
+
+        return norm_weight_coeffs
+
     def calculate_membership_function(self, evaluations, T1, T5):
         membership_functions = []
 
@@ -13,7 +24,7 @@ class ManageabilityProcessAssessment:
 
         return membership_functions
 
-    def evaluate_manageability_process(self, input_data, terms):
+    def evaluate_manageability_process(self, input_data, terms, weight_coeffs):
         T1 = [0, 20]
         T2 = [20, 40]
         T3 = [40, 60]
@@ -35,3 +46,4 @@ class ManageabilityProcessAssessment:
 
         membership_functions = self.calculate_membership_function(criterion_evaluations, T1, T5)
 
+        normalized_weight_coeffs = self.calculate_norm_weight_coeffs(weight_coeffs)

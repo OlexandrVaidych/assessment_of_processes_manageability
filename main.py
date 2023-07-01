@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
         weight_coeffs = [8, 9, 9, 10, 5]
 
         manageability_process_assessment = ManageabilityProcessAssessment()
-        manageability_process_assessment.evaluate_manageability_process(input_data, terms)
+        manageability_process_assessment.evaluate_manageability_process(input_data, terms, weight_coeffs)
 
 
 def main():
