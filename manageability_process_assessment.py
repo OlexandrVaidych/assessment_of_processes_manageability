@@ -81,3 +81,10 @@ class ManageabilityProcessAssessment:
 
         processes_manageability_assessments = self.calculate_processes_manageability_assessments(T1[0], T5[1],
                                                                                             projection_assessment)
+
+        processes_manageability_assessments_str = f"Processes manageability assessments: \n"\
+                                                  f"For regular mode - {processes_manageability_assessments[0]}\n"\
+                                                  f"For a critical situation - {processes_manageability_assessments[1]}\n"\
+                                                  f"For an accident - {processes_manageability_assessments[2]}"
+
+        return processes_manageability_assessments_str
