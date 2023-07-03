@@ -1,4 +1,18 @@
 class ManageabilityProcessAssessment:
+    def calculate_processes_manageability_assessments(self, a, b, projection_assessment):
+        k1 = 2  # for regular mode
+        k2 = 3 / 2  # for a critical situation
+        k3 = 1 / 2  # for an accident
+
+        assessment1 = round(1 - ((projection_assessment - a) / (b - a)) ** k1, 2)
+
+        assessment2 = round(1 - ((projection_assessment - a) / (b - a)) ** k2, 2)
+
+        assessment3 = round(1 - ((projection_assessment - a) / (b - a)) ** k3, 2)
+
+        assessments = [assessment1, assessment2, assessment3]
+
+        return assessments
 
     def calculate_projection_assessment(self, a, b, convolution):
         projection_assessment = convolution * (b - a) + a
@@ -64,3 +78,6 @@ class ManageabilityProcessAssessment:
         convolution = self.calculate_convolution(membership_functions, normalized_weight_coeffs)
 
         projection_assessment = self.calculate_projection_assessment(T1[0], T5[1], convolution)
+
+        processes_manageability_assessments = self.calculate_processes_manageability_assessments(T1[0], T5[1],
+                                                                                            projection_assessment)
